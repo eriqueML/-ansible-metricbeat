@@ -6,3 +6,4 @@
     remote_src: true
     state: hard
   loop: "{{ metricbeat_modules }}"
+  notify: Restart metricbeat

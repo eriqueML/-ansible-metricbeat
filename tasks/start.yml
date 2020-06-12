@@ -1,0 +1,6 @@
+---
+- name: Add and enable Metricbeat service.
+  service:
+    name: metricbeat
+    state: "{{ metricbeat_service_state }}"
+    enabled: "{{ metricbeat_service_enabled }}"

@@ -1,0 +1,15 @@
+[Unit]
+Description=Metricbeat sends log files to Logstash or directly to Elasticsearch.
+Documentation=https://www.elastic.co/products/beats/metricbeat
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment="BEAT_LOG_OPTS="
+Environment="BEAT_CONFIG_OPTS=-c {{ metricbeat_config_file }}"
+Environment="BEAT_PATH_OPTS=-path.home {{ metricbeat_home }} -path.config {{ metricbeat_config_dir }} -path.data {{ metricbeat_data_dir }} -path.logs {{ metricbeat_log_dir }}"
+ExecStart={{ metricbeat_home }}/bin/metricbeat -environment systemd $BEAT_LOG_OPTS $BEAT_CONFIG_OPTS $BEAT_PATH_OPTS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

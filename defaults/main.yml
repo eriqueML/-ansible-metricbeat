@@ -1,0 +1,49 @@
+---
+# installation vars
+metricbeat_version: 7.7.1
+metricbeat_install_rpm_url: "https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ metricbeat_version }}-x86_64.rpm"
+metricbeat_install_rpm_dest: "/tmp"
+
+# metricbeat dirs vars
+metricbeat_config_file: "{{ metricbeat_config_dir }}/metricbeat.yml"
+metricbeat_home: "/usr/share/metricbeat"
+metricbeat_config_dir: "/etc/metricbeat"
+metricbeat_data_dir: "/var/lib/metricbeat"
+metricbeat_log_dir: "/var/log/metricbeat"
+metricbeat_sysd_script: "/etc/systemd/system/metricbeat.service"
+
+# metricbeat main conf vars
+metricbeat_reload_enabled: false
+metricbeat_reload_period: 10s
+
+# metricbeat systemd vars
+metricbeat_service_state: started
+metricbeat_service_enabled: true
+
+# metricbeat output elasticsearch vars
+metricbeat_output_elasticsearch: true
+metricbeat_elasticsearch_hosts:
+  - "localhost:9200"
+metricbeat_elasticsearch_url_protocol: http
+metricbeat_elasticsearch_credentials: false
+metricbeat_elasticsearch_username:
+metricbeat_elasticsearch_password:
+# metricbeat_elasticsearch_apikey: 
+
+# metricbeat output logstash vars
+metricbeat_output_logstash: false
+metricbeat_logstash_hosts:
+
+# metricbeat logging vars
+metricbeat_logging_level: debug
+
+# metricbeat x-pack monitoring
+metricbeat_monitoring_enabled: false
+metricbeat_monitoring_cluster_uuid:
+
+# metricbeat modules vars
+metricbeat_modules_path: /etc/metricbeat/modules.d/ 
+metricbeat_modules_used: true
+metricbeat_modules:
+  - docker
+  - rabbitmq 

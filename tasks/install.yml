@@ -1,0 +1,11 @@
+---
+- name: Download rpm package
+  get_url:
+    url: "{{ metricbeat_install_rpm_url }}"
+    dest: "{{ metricbeat_install_rpm_dest }}"
+    validate_certs: no 
+
+- name: Run rpm installation
+  yum:
+    name: "{{ metricbeat_install_rpm_dest }}/metricbeat-{{ metricbeat_version }}-x86_64.rpm"
+    state: installed

@@ -1,0 +1,36 @@
+---
+- name: Ensure metricbeat directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    recurse: true
+  loop:
+    - "{{ metricbeat_home }}"
+    - "{{ metricbeat_config_dir }}"
+    - "{{ metricbeat_data_dir }}"
+    - "{{ metricbeat_log_dir }}"
+
+- name: Prepare main config file
+  template:
+    src: etc/metricbeat/metricbeat.yml.j2
+    dest: "{{ metricbeat_config_file }}"
+    owner: root
+    group: root
+    mode: 0640
+  notify: Restart metricbeat
+
+- name: Use metricbeat modules tasks
+  include_tasks: modules.yml
+  when: metricbeat_modules_used
+
+- name: Prepare systemd file
+  template: 
+    src: etc/systemd/metricbeat.service.j2
+    dest: "{{ metricbeat_sysd_script }}"
+    mode: 0644
+    force: true
+  notify:
+    - Reload systemd daemon
+    - Restart metricbeat

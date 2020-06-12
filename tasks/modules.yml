@@ -1,0 +1,8 @@
+---
+- name: Using modules 
+  file:
+    src: "{{ metricbeat_modules_path }}/{{ item }}.yml.disabled"
+    path: "{{ metricbeat_modules_path }}/{{ item }}.yml"
+    remote_src: true
+    state: hard
+  loop: "{{ metricbeat_modules }}"

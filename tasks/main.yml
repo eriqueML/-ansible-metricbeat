@@ -1,0 +1,9 @@
+---
+- name: Run installation tasks
+  include_tasks: install.yml
+
+- name: Run config tasks
+  include_tasks: config.yml
+
+- name: Run systemd tasks
+  include_tasks: start.yml

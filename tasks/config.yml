@@ -23,7 +23,7 @@
 
 - name: Use metricbeat modules tasks
   include_tasks: modules.yml
-  when: metricbeat_modules_used
+  when: metricbeat_modules_enabled
 
 - name: Prepare systemd file
   template: 

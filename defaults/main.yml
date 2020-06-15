@@ -43,7 +43,5 @@ metricbeat_monitoring_cluster_uuid:
 
 # metricbeat modules vars
 metricbeat_modules_path: /etc/metricbeat/modules.d/ 
-metricbeat_modules_used: true
-metricbeat_modules:
-  - docker
-  - rabbitmq 
+metricbeat_modules_enabled: false
+metricbeat_modules: []

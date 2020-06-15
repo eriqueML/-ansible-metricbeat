@@ -1,5 +1,5 @@
 ---
-- name: Using modules 
-  command: metricbeat modules enable "{{ item }}"
+- name: Enable/Disable modules 
+  command: "metricbeat modules {{ metricbeat_modules_operation }} {{ item }}"
   loop: "{{ metricbeat_modules }}"
   notify: Restart metricbeat

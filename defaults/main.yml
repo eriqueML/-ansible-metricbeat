@@ -34,6 +34,11 @@ metricbeat_elasticsearch_password:
 metricbeat_output_logstash: false
 metricbeat_logstash_hosts:
 
+# metricbeat kibana vars
+metricbeat_kibana: false
+metricbeat_kibana_url: localhost:5601
+metricbeat_kibana_spaceid: default
+
 # metricbeat logging vars
 metricbeat_logging_level: debug
 

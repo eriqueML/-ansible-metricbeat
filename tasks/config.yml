@@ -21,9 +21,9 @@
     mode: 0640
   notify: Restart metricbeat
 
-- name: Use metricbeat modules tasks
+- name: Run metricbeat modules tasks
   include_tasks: modules.yml
-  when: metricbeat_modules_enabled
+  when: metricbeat_modules != []
 
 - name: Prepare systemd file
   template: 

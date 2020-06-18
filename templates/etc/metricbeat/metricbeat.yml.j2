@@ -81,15 +81,21 @@ output.elasticsearch:
   # Protocol - either `http` (default) or `https`.
   protocol: "{{ metricbeat_elasticsearch_url_protocol }}"
 
-  {% if metricbeat_elasticsearch_apikey is defined %}
-    api_key: "id:api_key"
-  {% endif %}
-  {% if metricbeat_elasticsearch_credentials %}
-    username: "{{ metricbeat_elasticsearch_username }}"
-    password: "{{ metricbeat_elasticsearch_password }}"
-  {% endif %}
+{% if metricbeat_elasticsearch_apikey is defined %}
+  api_key: "id:api_key"
 {% endif %}
 
+{% if metricbeat_elasticsearch_username is defined %}
+  # elasticsearch username
+  username: "{{ metricbeat_elasticsearch_username }}"
+{% endif %}
+
+{% if metricbeat_elasticsearch_password is defined %}
+  # elasticsearch password
+  password: "{{ metricbeat_elasticsearch_password }}"
+{% endif %}
+
+{% endif %}
 #----------------------------- Logstash output --------------------------------
 {% if metricbeat_output_logstash %}
 output.logstash:

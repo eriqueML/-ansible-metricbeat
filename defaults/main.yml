@@ -25,9 +25,8 @@ metricbeat_output_elasticsearch: true
 metricbeat_elasticsearch_hosts:
   - "localhost:9200"
 metricbeat_elasticsearch_url_protocol: http
-metricbeat_elasticsearch_credentials: false
-metricbeat_elasticsearch_username:
-metricbeat_elasticsearch_password:
+# metricbeat_elasticsearch_username:
+# metricbeat_elasticsearch_password: 
 # metricbeat_elasticsearch_apikey: 
 
 # metricbeat output logstash vars
@@ -48,6 +47,5 @@ metricbeat_monitoring_cluster_uuid:
 
 # metricbeat modules vars
 metricbeat_modules_path: /etc/metricbeat/modules.d/ 
-metricbeat_modules_enabled: false
 metricbeat_modules_operation: enable
 metricbeat_modules: []
